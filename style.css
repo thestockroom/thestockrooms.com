@@ -1,50 +1,533 @@
+/* =====================================================
+   THE STOCK ROOM — TRADING TERMINAL
+   ===================================================== */
 
-:root{--bg:#050505;--panel:#0d0d0d;--gold:#d7ad52;--gold2:#f4d889;--text:#f6f2e8;--muted:#aaa;--line:#2a2417}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 20% 0%,#211a09 0,#080808 28%,#030303 70%);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}
-.nav{position:sticky;top:0;z-index:50;background:rgba(5,5,5,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.navin{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}.brand{font-weight:900;letter-spacing:2px;color:var(--gold2)}.links{display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end}.links a{font-size:13px;color:#ddd}.links a:hover{color:var(--gold2)}.menu{display:none;background:none;border:1px solid #554622;color:var(--gold2);padding:8px 11px;border-radius:10px}
-.hero{min-height:78vh;display:grid;place-items:center;text-align:center;padding:70px 20px;position:relative;overflow:hidden}.hero:before,.hero:after{content:"";position:absolute;border:1px solid rgba(215,173,82,.22);border-radius:50%;animation:float 7s ease-in-out infinite}.hero:before{width:420px;height:420px}.hero:after{width:650px;height:650px;animation-delay:-3s}.hero>*{position:relative;z-index:2}.eyebrow{color:var(--gold);letter-spacing:4px;font-size:12px;font-weight:800}.hero h1{font-size:clamp(44px,8vw,94px);line-height:.95;margin:18px 0;background:linear-gradient(90deg,#fff,var(--gold2),#fff);-webkit-background-clip:text;color:transparent}.hero p{max-width:760px;margin:0 auto 26px;color:#c9c4b8}.btn{display:inline-block;padding:12px 18px;border:1px solid #8e7135;border-radius:12px;background:linear-gradient(135deg,#241b08,#0b0b0b);color:var(--gold2);font-weight:800;margin:5px;box-shadow:0 12px 40px rgba(215,173,82,.12)}
-.wrap{max-width:1200px;margin:auto;padding:55px 20px}.section-title{font-size:34px;margin:0 0 8px}.sub{color:var(--muted);margin:0 0 25px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:linear-gradient(145deg,rgba(22,22,22,.98),rgba(8,8,8,.96));border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 18px 55px rgba(0,0,0,.35);transition:.3s;transform-style:preserve-3d}.card:hover{transform:translateY(-7px) rotateX(2deg);border-color:#6f5828}.card h3{margin-top:0;color:var(--gold2)}.tag{display:inline-block;border:1px solid #5e4b25;border-radius:999px;padding:4px 9px;margin:3px;color:#ddd;font-size:12px}.kpi{font-size:28px;font-weight:900;color:var(--gold2)}.photo{width:100%;display:block;border-radius:18px;border:1px solid #554622;object-fit:cover}.photo-full{width:100%;max-height:760px;object-fit:contain;background:#050505}.notice{border-left:4px solid var(--gold);padding:15px 18px;background:#0d0b06;border-radius:10px;color:#d9d3c7}.watermark{position:fixed;inset:0;display:grid;place-items:center;pointer-events:none;z-index:-1;font-size:clamp(50px,12vw,160px);font-weight:900;color:rgba(215,173,82,.035);transform:rotate(-12deg)}
-.form{display:grid;gap:12px;max-width:620px}.form input,.form textarea,.form select{width:100%;padding:13px;border-radius:10px;border:1px solid #3d341f;background:#080808;color:#fff}.form textarea{min-height:130px}.bar{height:10px;background:#1d1b17;border-radius:999px;overflow:hidden}.bar span{display:block;height:100%;width:65%;background:linear-gradient(90deg,#8d6b27,var(--gold2))}
-.terminal{background:#070707;border:1px solid #3d341f;border-radius:18px;overflow:hidden}.toolbar{display:flex;gap:7px;flex-wrap:wrap;padding:12px;border-bottom:1px solid #292418}.toolbar button,.toolbar select{background:#111;border:1px solid #4b3c20;color:#ddd;padding:8px 10px;border-radius:8px}.chart{min-height:430px;position:relative;background:repeating-linear-gradient(0deg,transparent 0 42px,rgba(215,173,82,.07) 43px),repeating-linear-gradient(90deg,transparent 0 64px,rgba(215,173,82,.05) 65px);overflow:hidden}.candles{position:absolute;inset:25px;display:flex;align-items:center;justify-content:space-around}.candle{width:9px;height:120px;background:#55b879;position:relative;box-shadow:0 0 12px rgba(85,184,121,.2)}.candle:before{content:"";position:absolute;left:3px;top:-28px;height:180px;border-left:2px solid currentColor}.red{background:#d45d5d;color:#d45d5d}.green{color:#55b879}.chartline{position:absolute;left:5%;right:5%;top:55%;height:2px;background:var(--gold);transform:rotate(-8deg);box-shadow:0 0 15px rgba(215,173,82,.6)}
-footer{border-top:1px solid var(--line);padding:30px 20px;text-align:center;color:#888}.reveal{animation:rise .7s both}.pulse{animation:pulse 3s infinite}.float{animation:float 5s ease-in-out infinite}
-@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}@keyframes pulse{50%{box-shadow:0 0 50px rgba(215,173,82,.2)}}@keyframes float{50%{transform:translateY(-16px) rotate(3deg)}}
-@media(max-width:800px){.links{display:none}.links.mobile{display:grid;position:absolute;left:0;right:0;top:60px;background:#070707;padding:15px;border-bottom:1px solid var(--line)}.menu{display:block}.grid{grid-template-columns:1fr}.hero{min-height:70vh;padding:55px 15px}.wrap{padding:42px 15px}.chart{min-height:360px}.photo-full{max-height:650px}}
+.page-terminal {
+  overflow-x: hidden;
+}
 
-/* v2.0 3D page system */
-body{perspective:1200px;overflow-x:hidden}.scene3d{height:230px;position:relative;margin:0 auto 25px;max-width:900px;overflow:hidden;border:1px solid rgba(215,173,82,.25);border-radius:28px;background:radial-gradient(circle at 50% 45%,rgba(215,173,82,.13),transparent 52%),linear-gradient(145deg,#11100b,#030303);box-shadow:0 30px 80px rgba(0,0,0,.6),inset 0 0 70px rgba(215,173,82,.04);transform-style:preserve-3d}.scene3d .orb{position:absolute;width:85px;height:85px;border-radius:50%;left:calc(50% - 42px);top:70px;background:radial-gradient(circle at 30% 25%,#fff6c9,#d7ad52 32%,#6e5018 68%,#080808 72%);box-shadow:0 0 45px rgba(215,173,82,.45);animation:orbit 6s ease-in-out infinite}.scene3d .ring{position:absolute;border:1px solid rgba(244,216,137,.55);border-radius:50%;left:calc(50% - 100px);top:25px;width:200px;height:160px;transform:rotateX(62deg);animation:spin3d 8s linear infinite}.scene3d .ring.r2{width:280px;height:120px;left:calc(50% - 140px);top:45px;transform:rotateY(65deg);animation-duration:11s}.scene3d .label3d{position:absolute;bottom:18px;width:100%;text-align:center;letter-spacing:4px;font-weight:900;color:#f4d889;text-transform:uppercase;font-size:12px}.page-trading .scene3d{background:radial-gradient(circle at 70% 30%,rgba(55,184,121,.14),transparent 35%),#050706}.page-ceo .scene3d{background:radial-gradient(circle at 50% 40%,rgba(244,216,137,.2),transparent 45%),#080704}.page-team .scene3d{background:radial-gradient(circle at 25% 50%,rgba(90,120,255,.12),transparent 35%),radial-gradient(circle at 75% 50%,rgba(215,173,82,.16),transparent 35%),#050505}.page-demo .scene3d{background:radial-gradient(circle at 50% 45%,rgba(76,170,255,.12),transparent 45%),#040608}.page-terminal .scene3d{background:repeating-linear-gradient(0deg,transparent 0 28px,rgba(215,173,82,.06) 29px),#040404}.page-leaderboard .scene3d{background:radial-gradient(circle at 50% 55%,rgba(215,173,82,.25),transparent 32%),#080704}.page-certificate .scene3d{background:linear-gradient(135deg,#080704,#171107,#050505)}.page-journey .scene3d{background:linear-gradient(90deg,#050505,#11100b,#050505)}.page-ai .scene3d{background:radial-gradient(circle at 50% 50%,rgba(115,105,255,.2),transparent 38%),#050507}.page-faq .scene3d{background:radial-gradient(circle at 30% 40%,rgba(215,173,82,.13),transparent 30%),#060606}.page-contact .scene3d{background:radial-gradient(circle at 70% 40%,rgba(64,180,255,.13),transparent 35%),#050709}.page-auth .scene3d{background:radial-gradient(circle at 50% 45%,rgba(215,173,82,.2),transparent 40%),#050505}.page-legal .scene3d{background:linear-gradient(135deg,#090909,#11100d,#050505)}
-.page-index .scene3d{height:320px}.page-index .scene3d .orb{width:120px;height:120px;left:calc(50% - 60px);top:88px;animation:heroOrb 5s ease-in-out infinite}.page-index .scene3d .ring{width:360px;height:220px;left:calc(50% - 180px);top:50px}.scene3d:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 65%,rgba(215,173,82,.08));pointer-events:none}
-@keyframes orbit{0%,100%{transform:translate3d(-35px,-8px,40px) rotateY(0)}50%{transform:translate3d(35px,12px,90px) rotateY(180deg)}}@keyframes heroOrb{0%,100%{transform:translate3d(-120px,5px,80px) rotateY(0) scale(1)}50%{transform:translate3d(120px,-15px,140px) rotateY(180deg) scale(1.08)}}@keyframes spin3d{to{transform:rotateX(62deg) rotateZ(360deg)}}
-@media(max-width:800px){.scene3d{height:190px;border-radius:20px}.page-index .scene3d{height:240px}.page-index .scene3d .ring{width:260px;height:160px;left:calc(50% - 130px)}.page-index .scene3d .orb{top:62px}}
+.terminal-page {
+  position: relative;
+  z-index: 2;
+}
 
-/* Terminal v2.1 — functional demo terminal, responsive and mobile-first */
-.terminal-shell{background:#050505;border:1px solid #3d341f;border-radius:18px;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.55)}
-.terminal-top{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px;border-bottom:1px solid #292418;background:#0a0a0a}.symbol-tabs,.terminal-actions,.tf-row,.side-row{display:flex;gap:7px;flex-wrap:wrap}.symbol-tab,.terminal-actions button,.tf,.chart-fullscreen{background:#111;border:1px solid #4b3c20;color:#ddd;padding:9px 11px;border-radius:9px;cursor:pointer}.symbol-tab.active,.tf.active{color:#080808;background:var(--gold2);font-weight:900}.account-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:#272117}.account-strip>div{background:#0b0b0b;padding:11px 13px}.account-strip span{display:block;color:#888;font-size:11px}.account-strip strong{color:var(--gold2);font-size:16px}.terminal-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px}.chart-panel{min-width:0;background:#050505}.chart-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid #292418}.chart-head b{color:#fff}.chart-head small{display:block;color:#63c98b;font-size:11px}.tv-wrap{height:650px;min-height:420px;position:relative;background:#080808}.tv-widget{position:absolute;inset:0}.chart-fullscreen{position:absolute;right:10px;top:10px;z-index:5}.chart-note{padding:9px 12px;color:#777;font-size:11px;border-top:1px solid #292418}.order-panel{border-left:1px solid #292418;background:#090909;padding:14px}.quote-card,.order-ticket,.position-card,.history-card{border:1px solid #312816;border-radius:14px;padding:14px;margin-bottom:12px;background:linear-gradient(145deg,#11100c,#080808)}.quote-card span{color:#888;font-size:11px}.quote-card h2{margin:2px 0;color:var(--gold2)}.quote-price{font-size:30px;font-weight:900;margin:5px 0}.side{flex:1;padding:12px;border:1px solid #3d341f;border-radius:10px;background:#111;color:#ddd;font-weight:900;cursor:pointer}.side.buy.active{background:#1c7f50;color:#fff}.side.sell.active{background:#a83f3f;color:#fff}.order-ticket label{display:block;font-size:12px;color:#aaa;margin-top:12px}.order-ticket input{width:100%;margin-top:5px;padding:11px;border-radius:9px;border:1px solid #3d341f;background:#050505;color:#fff}.price-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.place-order,.close-position{width:100%;padding:12px;border-radius:10px;margin-top:12px;font-weight:900;cursor:pointer}.place-order{border:1px solid #5f4b22;background:linear-gradient(135deg,#d7ad52,#8e6c27);color:#080808}.close-position{border:1px solid #603b3b;background:#1a0b0b;color:#f0b0b0}.close-position:disabled{opacity:.45;cursor:not-allowed}.order-status{font-size:11px;color:#aaa;margin-bottom:0}.position-card h3,.history-card h3{margin:0 0 8px;color:var(--gold2)}.history-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #211c13;font-size:12px}.terminal-info{margin-top:18px}.terminal-page{padding-top:35px}.terminal-page .sub{max-width:900px}
-@media(max-width:900px){.terminal-top{align-items:stretch;flex-direction:column}.terminal-grid{grid-template-columns:1fr}.order-panel{border-left:0;border-top:1px solid #292418}.account-strip{grid-template-columns:repeat(3,1fr)}.tv-wrap{height:520px}}
-@media(max-width:600px){.navin{padding:11px 13px}.links.mobile{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:absolute;left:8px;right:8px;top:58px;background:#080808;padding:12px;border:1px solid #3d341f;border-radius:12px;box-shadow:0 20px 60px #000}.links.mobile a{padding:10px;border:1px solid #211c13;border-radius:8px}.account-strip{grid-template-columns:repeat(2,1fr)}.tv-wrap{height:470px;min-height:400px}.chart-head{align-items:flex-start;flex-direction:column}.tf-row{width:100%;overflow:auto;flex-wrap:nowrap;padding-bottom:2px}.tf{flex:0 0 auto}.symbol-tabs{width:100%;overflow:auto;flex-wrap:nowrap}.symbol-tab{flex:0 0 auto}.terminal-actions{width:100%}.terminal-actions button{flex:1}.price-row{grid-template-columns:1fr}.terminal-info.grid{grid-template-columns:1fr}}
+.terminal-shell {
+  width: 100%;
+  margin: 30px auto;
+  background: rgba(7, 7, 7, 0.96);
+  border: 1px solid rgba(214, 179, 90, 0.35);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.55),
+    inset 0 0 35px rgba(214, 179, 90, 0.04);
+}
 
-/* V2.3 chart stability */
-.tv-wrap{height:650px;min-height:420px;overflow:hidden}
-.tv-widget,.tradingview-widget-container,.tradingview-widget-container__widget{width:100%!important;height:100%!important}
-.fallback-chart{height:100%;position:relative;background:linear-gradient(#0b0b0b,#050505);overflow:hidden}
-.fallback-grid{position:absolute;inset:12% 2% 12% 2%;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:10% 20%;}
-.fallback-line{position:absolute;left:5%;right:5%;top:48%;height:2px;background:var(--gold2);transform:rotate(-3deg);box-shadow:0 0 14px rgba(212,175,55,.5)}
-.fallback-title{position:absolute;top:15px;left:18px;z-index:2;color:var(--gold2);font-weight:800}.fallback-msg{position:absolute;bottom:18px;left:18px;right:18px;z-index:2;color:#888;font-size:12px}
-#terminalApp.immersive-fullscreen{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;z-index:999999!important;margin:0!important;padding:0!important;border-radius:0!important;background:#050505!important;overflow:hidden!important}
-#terminalApp.immersive-fullscreen .terminal-top{display:none!important}
-#terminalApp.immersive-fullscreen .account-strip,#terminalApp.immersive-fullscreen .terminal-info,#terminalApp.immersive-fullscreen~footer{display:none!important}
-#terminalApp.immersive-fullscreen .terminal-grid{display:block!important;width:100%!important;height:100%!important}
-#terminalApp.immersive-fullscreen .chart-panel{display:block!important;width:100%!important;height:100%!important}
-#terminalApp.immersive-fullscreen .chart-head{position:absolute;top:0;left:0;right:0;z-index:20;background:rgba(5,5,5,.78);backdrop-filter:blur(8px)}
-#terminalApp.immersive-fullscreen .tv-wrap{height:100vh!important;width:100%!important}
-#terminalApp.immersive-fullscreen .chart-note{display:none!important}
-#terminalApp.immersive-fullscreen .order-panel{position:absolute!important;left:50%;bottom:18px;transform:translateX(-50%);z-index:100!important;width:min(430px,94vw)!important;padding:0!important;background:transparent!important;border:0!important;pointer-events:none!important}
-#terminalApp.immersive-fullscreen .quote-card,#terminalApp.immersive-fullscreen .position-card,#terminalApp.immersive-fullscreen .history-card{display:none!important}
-#terminalApp.immersive-fullscreen .order-ticket{background:rgba(5,5,5,.88)!important;backdrop-filter:blur(12px);border:1px solid rgba(212,175,55,.55);border-radius:16px;padding:10px!important;pointer-events:auto!important}
-#terminalApp.immersive-fullscreen .order-ticket label,#terminalApp.immersive-fullscreen .price-row,#terminalApp.immersive-fullscreen #placeOrder,#terminalApp.immersive-fullscreen #closePosition,#terminalApp.immersive-fullscreen .order-status{display:none!important}
-#terminalApp.immersive-fullscreen .side-row{display:flex!important;gap:10px!important}
-#terminalApp.immersive-fullscreen .side{display:block!important;flex:1;min-height:56px;font-size:18px}
-#terminalApp.immersive-fullscreen .chart-fullscreen{display:none!important}
-@media(max-width:800px){.tv-wrap{height:70vh;min-height:420px}.chart-head{flex-wrap:wrap}.tf-row{overflow-x:auto;flex-wrap:nowrap}.terminal-grid{grid-template-columns:1fr}.order-panel{border-left:0;border-top:1px solid #292418}}
-/* Final terminal reliability layer */
-.demo-canvas{display:block;width:100%;height:100%;touch-action:none}.tv-wrap{overflow:hidden;background:#070707}.tv-widget{z-index:1}.chart-fullscreen{z-index:20}.immersive-fullscreen{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;z-index:2147483647!important;margin:0!important;border-radius:0!important;background:#050505!important;overflow:hidden!important}.immersive-fullscreen .terminal-top,.immersive-fullscreen .account-strip,.immersive-fullscreen .terminal-info,.immersive-fullscreen~footer{display:none!important}.immersive-fullscreen .terminal-grid{display:block!important;height:100vh!important}.immersive-fullscreen .chart-panel{width:100%!important;height:100vh!important}.immersive-fullscreen .chart-head{position:absolute!important;top:0;left:0;right:0;z-index:30;background:rgba(5,5,5,.88)}.immersive-fullscreen .tv-wrap{height:100vh!important}.immersive-fullscreen .chart-note{display:none!important}.immersive-fullscreen .order-panel{position:absolute!important;left:50%!important;bottom:18px!important;transform:translateX(-50%)!important;width:min(430px,94vw)!important;z-index:50!important;background:transparent!important;border:0!important;padding:0!important;pointer-events:none}.immersive-fullscreen .quote-card,.immersive-fullscreen .position-card,.immersive-fullscreen .history-card,.immersive-fullscreen .order-ticket label,.immersive-fullscreen .price-row,.immersive-fullscreen #placeOrder,.immersive-fullscreen #closePosition,.immersive-fullscreen .order-status{display:none!important}.immersive-fullscreen .order-ticket{background:rgba(5,5,5,.9)!important;border:1px solid rgba(215,173,82,.65)!important;padding:10px!important;pointer-events:auto!important}.immersive-fullscreen .side{min-height:58px;font-size:19px}.immersive-fullscreen .chart-fullscreen{display:none!important}
+.terminal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 15, 15, 0.96);
+}
+
+.symbol-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.symbol-tab,
+.terminal-actions button,
+.tf,
+.chart-fullscreen {
+  border: 1px solid rgba(214, 179, 90, 0.28);
+  background: #111;
+  color: #ddd;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.symbol-tab {
+  padding: 10px 13px;
+  font-weight: 700;
+}
+
+.symbol-tab:hover,
+.symbol-tab.active,
+.terminal-actions button:hover,
+.tf:hover,
+.tf.active {
+  color: #050505;
+  background: #d6b35a;
+  border-color: #d6b35a;
+}
+
+.terminal-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-actions button {
+  padding: 10px 13px;
+}
+
+.account-strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: rgba(214, 179, 90, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.account-strip > div {
+  padding: 14px;
+  background: #0b0b0b;
+}
+
+.account-strip span {
+  display: block;
+  color: #888;
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+.account-strip strong {
+  color: #eee;
+  font-size: 15px;
+}
+
+.terminal-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  min-height: 650px;
+}
+
+.chart-panel {
+  min-width: 0;
+  background: #070707;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chart-head {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chart-head b {
+  display: block;
+  color: #fff;
+  font-size: 16px;
+}
+
+.chart-head small {
+  display: block;
+  margin-top: 3px;
+  color: #888;
+  font-size: 11px;
+}
+
+.tf-row {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.tf {
+  padding: 7px 9px;
+  font-size: 11px;
+}
+
+.tv-wrap {
+  position: relative;
+  width: 100%;
+  height: 550px;
+  background: #070707;
+  overflow: hidden;
+}
+
+#priceCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.tv-widget {
+  display: none;
+}
+
+.chart-fullscreen {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+}
+
+.chart-note {
+  padding: 10px 14px;
+  color: #777;
+  font-size: 11px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.order-panel {
+  background: #0b0b0b;
+  padding: 14px;
+  overflow-y: auto;
+}
+
+.quote-card,
+.order-ticket,
+.position-card,
+.history-card {
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 13px;
+  padding: 15px;
+  margin-bottom: 12px;
+}
+
+.quote-card > span {
+  color: #888;
+  font-size: 11px;
+}
+
+.quote-card h2 {
+  margin: 7px 0;
+  color: #fff;
+  font-size: 19px;
+}
+
+.quote-price {
+  color: #d6b35a;
+  font-size: 26px;
+  font-weight: 800;
+  margin: 10px 0 5px;
+}
+
+.side-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 13px;
+}
+
+.side {
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.side.buy {
+  color: #fff;
+  background: #123b2d;
+}
+
+.side.sell {
+  color: #fff;
+  background: #3b1717;
+}
+
+.side.buy.active {
+  background: #18a979;
+  color: #fff;
+}
+
+.side.sell.active {
+  background: #df4b4b;
+  color: #fff;
+}
+
+.order-ticket label {
+  display: block;
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.order-ticket input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 5px;
+  padding: 11px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #080808;
+  color: #fff;
+  outline: none;
+}
+
+.order-ticket input:focus {
+  border-color: #d6b35a;
+}
+
+.price-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.place-order,
+.close-position {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+.place-order {
+  border: 1px solid #d6b35a;
+  background: #d6b35a;
+  color: #080808;
+}
+
+.close-position {
+  margin-top: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #222;
+  color: #fff;
+}
+
+.close-position:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.order-status {
+  min-height: 34px;
+  margin: 12px 0 0;
+  color: #999;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.position-card h3,
+.history-card h3 {
+  margin-top: 0;
+  color: #d6b35a;
+  font-size: 14px;
+}
+
+.position-card,
+.history-card {
+  color: #999;
+  font-size: 12px;
+}
+
+.history-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.history-row b {
+  color: #ddd;
+}
+
+.history-row span {
+  color: #d6b35a;
+}
+
+/* =====================================================
+   IMMERSIVE FULL SCREEN
+   Only terminal/chart/order controls remain visible.
+   ===================================================== */
+
+.terminal-shell.immersive-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: #050505;
+  overflow: hidden;
+}
+
+.terminal-shell.immersive-fullscreen .terminal-top,
+.terminal-shell.immersive-fullscreen .account-strip,
+.terminal-shell.immersive-fullscreen .chart-note,
+.terminal-shell.immersive-fullscreen .position-card,
+.terminal-shell.immersive-fullscreen .history-card {
+  display: none;
+}
+
+.terminal-shell.immersive-fullscreen .terminal-grid {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.terminal-shell.immersive-fullscreen .chart-panel {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.terminal-shell.immersive-fullscreen .chart-head {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: rgba(5, 5, 5, 0.88);
+}
+
+.terminal-shell.immersive-fullscreen .tv-wrap {
+  height: 100vh;
+  width: 100%;
+}
+
+.terminal-shell.immersive-fullscreen .order-panel {
+  position: absolute;
+  z-index: 30;
+  right: 15px;
+  bottom: 15px;
+  width: 270px;
+  max-height: calc(100vh - 100px);
+  padding: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.terminal-shell.immersive-fullscreen .quote-card,
+.terminal-shell.immersive-fullscreen .order-ticket {
+  background: rgba(10, 10, 10, 0.94);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-shell.immersive-fullscreen .quote-card {
+  display: none;
+}
+
+.terminal-shell.immersive-fullscreen #chartFullscreen {
+  display: none;
+}
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 900px) {
+  .terminal-top {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .terminal-actions {
+    width: 100%;
+  }
+
+  .terminal-actions button {
+    flex: 1;
+  }
+
+  .account-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .terminal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-panel {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .order-panel {
+    overflow: visible;
+  }
+
+  .tv-wrap {
+    height: 480px;
+  }
+}
+
+@media (max-width: 600px) {
+  .terminal-shell {
+    margin: 20px 0;
+    border-radius: 12px;
+  }
+
+  .symbol-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .symbol-tab {
+    padding: 9px 5px;
+    font-size: 10px;
+  }
+
+  .account-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .account-strip > div {
+    padding: 11px;
+  }
+
+  .chart-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .tf-row {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 3px;
+  }
+
+  .tf {
+    flex: 0 0 auto;
+  }
+
+  .tv-wrap {
+    height: 430px;
+  }
+
+  .terminal-shell.immersive-fullscreen .chart-head {
+    padding: 8px;
+  }
+
+  .terminal-shell.immersive-fullscreen .order-panel {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: auto;
+  }
+
+  .terminal-shell.immersive-fullscreen .order-ticket {
+    margin: 0;
+  }
+
+  .terminal-shell.immersive-fullscreen .tf-row {
+    max-width: 100%;
+  }
+    }
