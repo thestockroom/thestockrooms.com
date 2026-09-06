@@ -62,4 +62,534 @@
   <div class="orb"></div>
 
   <div class="label3d">
-    EXCHANGE-STYLE DEM
+    EXCHANGE-STYLE DEMO TERMINAL · VIRTUAL ONLY
+  </div>
+
+</div>
+
+
+<section class="wrap terminal-page">
+
+  <h1 class="section-title">
+    Trading Terminal
+  </h1>
+
+  <p class="sub">
+    BTC, Gold and Silver market charts with a fully simulated
+    demo order system. No real broker orders are sent.
+  </p>
+
+
+  <div class="terminal-shell" id="terminalApp">
+
+
+    <!-- TOP BAR -->
+    <div class="terminal-top">
+
+      <div class="symbol-tabs">
+
+        <button
+          class="symbol-tab active"
+          type="button"
+          data-symbol="BTCUSDT"
+          data-name="BTC/USDT">
+
+          ₿ BTC/USDT
+
+        </button>
+
+
+        <button
+          class="symbol-tab"
+          type="button"
+          data-symbol="XAUUSD"
+          data-name="Gold / USD">
+
+          🥇 Gold/USD
+
+        </button>
+
+
+        <button
+          class="symbol-tab"
+          type="button"
+          data-symbol="XAGUSD"
+          data-name="Silver / USD">
+
+          🥈 Silver/USD
+
+        </button>
+
+      </div>
+
+
+      <div class="terminal-actions">
+
+        <button
+          type="button"
+          id="fullscreenBtn">
+
+          ⛶ Full Screen
+
+        </button>
+
+
+        <button
+          type="button"
+          id="resetTerminal">
+
+          ↻ Reset
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ACCOUNT STRIP -->
+    <div class="account-strip">
+
+      <div>
+        <span>Virtual Balance</span>
+        <strong id="balance">$5,000.00</strong>
+      </div>
+
+
+      <div>
+        <span>Equity</span>
+        <strong id="equity">$5,000.00</strong>
+      </div>
+
+
+      <div>
+        <span>Open P&amp;L</span>
+        <strong id="openPnl">$0.00</strong>
+      </div>
+
+
+      <div>
+        <span>Target</span>
+        <strong>$400</strong>
+      </div>
+
+
+      <div>
+        <span>Max Lot</span>
+        <strong>0.20</strong>
+      </div>
+
+
+      <div>
+        <span>Days</span>
+        <strong>0 / 7</strong>
+      </div>
+
+    </div>
+
+
+
+    <!-- MAIN TERMINAL -->
+    <div class="terminal-grid">
+
+
+      <!-- CHART -->
+      <main class="chart-panel">
+
+        <div class="chart-head">
+
+          <div>
+
+            <b id="marketName">
+              BTC/USDT
+            </b>
+
+            <small id="feedStatus">
+              Demo chart feed
+            </small>
+
+          </div>
+
+
+          <div class="tf-row">
+
+            <button
+              class="tf active"
+              type="button"
+              data-interval="1">
+              1m
+            </button>
+
+            <button
+              class="tf"
+              type="button"
+              data-interval="5">
+              5m
+            </button>
+
+            <button
+              class="tf"
+              type="button"
+              data-interval="15">
+              15m
+            </button>
+
+            <button
+              class="tf"
+              type="button"
+              data-interval="30">
+              30m
+            </button>
+
+            <button
+              class="tf"
+              type="button"
+              data-interval="60">
+              1H
+            </button>
+
+            <button
+              class="tf"
+              type="button"
+              data-interval="240">
+              4H
+            </button>
+
+            <button
+              class="tf"
+              type="button"
+              data-interval="D">
+              1D
+            </button>
+
+            <button
+              class="tf"
+              type="button"
+              data-interval="W">
+              1W
+            </button>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- CHART BOX -->
+        <div
+          class="tv-wrap"
+          id="chartBox">
+
+          <canvas
+            id="priceCanvas"
+            aria-label="Virtual demo price chart">
+          </canvas>
+
+
+          <div
+            class="tv-widget"
+            id="tvChart">
+          </div>
+
+
+          <button
+            class="chart-fullscreen"
+            id="chartFullscreen"
+            type="button"
+            aria-label="Chart full screen">
+
+            ⛶
+
+          </button>
+
+        </div>
+
+
+
+        <div class="chart-note">
+
+          Virtual demo chart with selectable timeframes.
+          BUY/SELL orders are simulated only and never sent
+          to a broker or exchange.
+
+        </div>
+
+      </main>
+
+
+
+      <!-- ORDER PANEL -->
+      <aside class="order-panel">
+
+
+        <!-- QUOTE -->
+        <div class="quote-card">
+
+          <span>
+            Selected market
+          </span>
+
+          <h2 id="quoteName">
+            BTC/USDT
+          </h2>
+
+          <div
+            class="quote-price"
+            id="quotePrice">
+
+            $65,000.00
+
+          </div>
+
+          <span id="quoteHint">
+            Virtual demo quote
+          </span>
+
+        </div>
+
+
+
+        <!-- ORDER TICKET -->
+        <div class="order-ticket">
+
+
+          <div class="side-row">
+
+            <button
+              class="side buy active"
+              id="buyBtn"
+              type="button">
+
+              BUY
+
+            </button>
+
+
+            <button
+              class="side sell"
+              id="sellBtn"
+              type="button">
+
+              SELL
+
+            </button>
+
+          </div>
+
+
+
+          <label>
+
+            Lot size
+
+            <input
+              id="lotInput"
+              type="number"
+              min="0.01"
+              max="0.20"
+              step="0.01"
+              value="0.01">
+
+          </label>
+
+
+
+          <div class="price-row">
+
+            <label>
+
+              Entry
+
+              <input
+                id="entryPrice"
+                readonly
+                placeholder="Auto">
+
+            </label>
+
+
+            <label>
+
+              Exit
+
+              <input
+                id="exitPrice"
+                readonly
+                placeholder="On close">
+
+            </label>
+
+          </div>
+
+
+
+          <button
+            class="place-order"
+            id="placeOrder"
+            type="button">
+
+            Place Virtual Order
+
+          </button>
+
+
+
+          <button
+            class="close-position"
+            id="closePosition"
+            type="button"
+            disabled>
+
+            Close Open Position
+
+          </button>
+
+
+
+          <p
+            class="order-status"
+            id="orderStatus">
+
+            Ready. Orders are virtual demo trades only.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- OPEN POSITION -->
+        <div class="position-card">
+
+          <h3>
+            Open Position
+          </h3>
+
+
+          <div id="positionEmpty">
+            No open position.
+          </div>
+
+
+          <div
+            id="positionDetails"
+            hidden>
+          </div>
+
+        </div>
+
+
+
+        <!-- HISTORY -->
+        <div class="history-card">
+
+          <h3>
+            Trade History
+          </h3>
+
+
+          <div id="historyList">
+            No trades yet.
+          </div>
+
+        </div>
+
+
+      </aside>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- INFO CARDS -->
+  <div class="terminal-info grid">
+
+
+    <div class="card">
+
+      <h3>
+        Demo Rules
+      </h3>
+
+      <p>
+        $5,000 initial virtual balance ·
+        $400 profit target ·
+        7 trading days ·
+        maximum lot size 0.20.
+      </p>
+
+      <a
+        class="btn"
+        href="demo-rules.html">
+
+        View Rules
+
+      </a>
+
+    </div>
+
+
+
+    <div class="card">
+
+      <h3>
+        AI Support
+      </h3>
+
+      <p>
+        Get instant help with navigation,
+        course access, demo rules and
+        terminal controls.
+      </p>
+
+      <a
+        class="btn"
+        href="support-ai.html">
+
+        Open Support AI
+
+      </a>
+
+    </div>
+
+
+
+    <div class="card">
+
+      <h3>
+        Safety
+      </h3>
+
+      <p>
+        This is an educational simulation.
+        BUY/SELL never sends an order to
+        a broker or exchange.
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<footer>
+
+  © <span class="year"></span>
+  THE STOCK ROOM · Educational &amp; demo platform
+
+</footer>
+
+
+
+<!-- ONLY ONCE -->
+<script src="script.js"></script>
+<script src="terminal.js"></script>
+
+</body>
+</html>
